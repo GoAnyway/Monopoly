@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Database.Entities.GameBoardObjects.Property;
+using Database.Entities.GameEntities.GameBoardObjects.Property;
 
 namespace Database
 {

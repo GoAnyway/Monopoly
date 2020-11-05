@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Database.Entities.GameEntities;
 
-namespace Models.GameModels
+namespace Database.Entities.GameEntities
 {
-    public class MonopolyGameModel
+    public class MonopolyGame
     {
-        public MonopolyGameModel()
+        public MonopolyGame()
         {
             Id = Guid.NewGuid();
-            GameBoard = new GameBoard();
             StartTime = DateTime.UtcNow;
         }
 
         public Guid Id { get; set; }
         public GameBoard GameBoard { get; set; }
-        public List<PlayerModel> Players { get; set; }
+        public ICollection<Player> Players { get; set; }
         public int Turn { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }

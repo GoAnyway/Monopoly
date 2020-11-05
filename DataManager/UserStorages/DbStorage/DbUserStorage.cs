@@ -4,10 +4,11 @@ using AutoMapper;
 using Database;
 using Database.Entities.UserEntity;
 using Microsoft.EntityFrameworkCore;
+using Models;
 using Models.AuthenticationModels;
 using Utils;
 
-namespace DataManager.DbStorage
+namespace DataManager.UserStorages.DbStorage
 {
     public class DbUserStorage : IUserStorage
     {
@@ -32,10 +33,7 @@ namespace DataManager.DbStorage
             if (user == null)
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "User is not found."
-                };
+                result.Error = new ErrorModel("User is not found.");
             }
             else
             {
@@ -58,10 +56,7 @@ namespace DataManager.DbStorage
             if (user == null || user.PasswordHash != hash)
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "Incorrect Username or Password."
-                };
+                result.Error = new ErrorModel("Incorrect Username or Password.");
 
                 return result;
             }
@@ -83,10 +78,7 @@ namespace DataManager.DbStorage
                                                    _.Nickname == model.Nickname))
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "A user with this Username/Email/Nickname already exists."
-                };
+                result.Error = new ErrorModel("A user with this Username/Email/Nickname already exists.");
             }
             else
             {

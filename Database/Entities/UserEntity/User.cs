@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Database.Entities.UserEntity.UserEnums;
 
 namespace Database.Entities.UserEntity
 {

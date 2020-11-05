@@ -1,4 +1,4 @@
-﻿namespace Database.Entities.GameBoardObjects.Property
+﻿namespace Database.Entities.GameEntities.GameBoardObjects.Property
 {
     public enum PropertyType
     {

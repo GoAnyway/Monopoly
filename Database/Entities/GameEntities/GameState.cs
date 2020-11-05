@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Database.Entities
+namespace Database.Entities.GameEntities
 {
     public class GameState
     {

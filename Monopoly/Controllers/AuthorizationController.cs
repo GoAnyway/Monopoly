@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using DataManager;
+using DataManager.UserStorages;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -84,14 +84,11 @@ namespace Monopoly.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, model.Username),
+                new Claim("UserId", $"{model.Id}"),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, $"{model.Role}")
             };
 
-            var id = new ClaimsIdentity(claims,
-                "AuthCookie",
-                ClaimsIdentity.DefaultNameClaimType,
-                ClaimsIdentity.DefaultRoleClaimType);
+            var id = new ClaimsIdentity(claims, "AuthCookie");
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }

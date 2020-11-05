@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataManager\DataManager.csproj" />
+    <ProjectReference Include="..\Game\Game.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace Models.AuthenticationModels
+﻿using Models.AuthenticationModels;
+
+namespace Models
 {
     public class GenericResultModel<TData>
     {

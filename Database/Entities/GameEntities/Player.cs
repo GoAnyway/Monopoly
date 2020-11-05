@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Database.Entities.GameBoardObjects.Property;
+using Database.Entities.GameEntities.GameBoardObjects.Property;
 using Database.Entities.UserEntity;
 
-namespace Database.Entities
+namespace Database.Entities.GameEntities
 {
     public class Player
     {

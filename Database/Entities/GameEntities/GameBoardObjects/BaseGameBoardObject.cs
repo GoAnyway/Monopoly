@@ -1,4 +1,4 @@
-﻿namespace Database.Entities.GameBoardObjects
+﻿namespace Database.Entities.GameEntities.GameBoardObjects
 {
     public abstract class BaseGameBoardObject
     {

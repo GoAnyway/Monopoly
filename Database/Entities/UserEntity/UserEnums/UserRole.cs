@@ -1,4 +1,4 @@
-﻿namespace Database.Entities.UserEntity
+﻿namespace Database.Entities.UserEntity.UserEnums
 {
     public enum UserRole
     {

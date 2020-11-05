@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Models;
 using Models.AuthenticationModels;
 
-namespace DataManager
+namespace DataManager.UserStorages
 {
     public interface IUserStorage
     {

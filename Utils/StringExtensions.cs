@@ -14,7 +14,7 @@ namespace Utils
                 var hashBytes = md5.ComputeHash(inputBytes);
                 var sb = new StringBuilder();
 
-                sb.Append(hashBytes.Select(_ => _.ToString("X2")));
+                sb.Append(hashBytes.Select(_ => _.ToString("X2")).ToList());
                 foreach (var hashByte in hashBytes)
                 {
                     sb.Append(hashByte.ToString("X2"));

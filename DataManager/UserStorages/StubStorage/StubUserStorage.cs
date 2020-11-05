@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Database.Entities.UserEntity;
+using Models;
 using Models.AuthenticationModels;
 using Utils;
 
-namespace DataManager.StubStorage
+namespace DataManager.UserStorages.StubStorage
 {
     public class StubUserStorage : IUserStorage
     {
@@ -49,10 +50,7 @@ namespace DataManager.StubStorage
             if (user == null)
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "User is not found."
-                };
+                result.Error = new ErrorModel("User is not found.");
             }
             else
             {
@@ -76,10 +74,7 @@ namespace DataManager.StubStorage
             if (user == null || user.PasswordHash != hash)
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "Incorrect Username or Password."
-                };
+                result.Error = new ErrorModel("Incorrect Username or Password.");
 
                 return result;
             }
@@ -102,10 +97,7 @@ namespace DataManager.StubStorage
                                 _.Nickname == model.Nickname))
             {
                 result.Success = false;
-                result.Error = new ErrorModel
-                {
-                    Message = "A user with this Username/Email/Nickname already exists."
-                };
+                result.Error = new ErrorModel("A user with this Username/Email/Nickname already exists.");
             }
             else
             {
