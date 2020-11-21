@@ -83,7 +83,7 @@ namespace Monopoly.Controllers
         {
             var user = await _authentication.GetUserByClaim(User);
 
-            if (gameCreationModel.Owner.Equals(user))
+            if (gameCreationModel.Owner.Id == user.Id)
             {
                 var gameId = await _gameCommunication.CreateGameAndGetId(gameCreationModel);
                 HttpContext.Session.SetString("game", $"{gameId}");

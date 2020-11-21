@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Monopoly.Authentication;
 using Monopoly.GameCommunication;
+using Utils.DIExtensions;
 using Utils.MapperProfiles;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
@@ -49,26 +50,20 @@ namespace Monopoly
                 });
 
 #if TEST || DEBUG
-            services.AddSingleton<IUserStorage, StubUserStorage>();
-            services.AddSingleton<IGameCreationStorage, StubGameCreationStorage>();
-            services.AddSingleton<IMonopolyGameStorage, StubMonopolyGameStorage>();
+            services.AddScoped<IUserStorage, StubUserStorage>();
+            services.AddScoped<IGameCreationStorage, StubGameCreationStorage>();
+            services.AddScoped<IMonopolyGameStorage, StubMonopolyGameStorage>();
 #else
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MonopolyContext>(options => options.UseSqlServer(connection));
 
-            services.AddSingleton<IUserStorage, DbUserStorage>();
-            services.AddSingleton<IGameCreationStorage, DbGameCreationStorage>();
-            services.AddSingleton<IMonopolyGameStorage, DbMonopolyGameStorage>();
+            services.AddScoped<IUserStorage, DbUserStorage>();
+            services.AddScoped<IGameCreationStorage, DbGameCreationStorage>();
+            services.AddScoped<IMonopolyGameStorage, DbMonopolyGameStorage>();
 #endif
 
-            services.AddSingleton<IConfigurationProvider>(_ =>
-                new MapperConfiguration(cfg => cfg.AddProfiles(new Profile[]
-                {
-                    new UserProfile(),
-                    new MonopolyGameProfile()
-                })));
-            services.AddSingleton<Mapper>();
-            services.AddSingleton<IAuthentication, CookieAuthentication>();
+            services.AddMapper();
+            services.AddScoped<IAuthentication, CookieAuthentication>();
             services.AddScoped<MonopolyGameCommunication, MonopolyGameCommunication>();
         }
 

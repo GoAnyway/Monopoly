@@ -9,6 +9,7 @@ namespace Database.Entities.GameEntities
         {
             Id = Guid.NewGuid();
             StartTime = DateTime.UtcNow;
+            LastUpdateTime = DateTime.UtcNow;
         }
 
         public Guid Id { get; set; }
@@ -17,5 +18,6 @@ namespace Database.Entities.GameEntities
         public int Turn { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }
+        public DateTime LastUpdateTime { get; set; }
     }
 }

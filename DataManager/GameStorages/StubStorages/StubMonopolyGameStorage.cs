@@ -21,16 +21,14 @@ namespace DataManager.GameStorages.StubStorages
             _mapper = mapper;
         }
 
-        public Task<Guid> CreateGame(GameCreationModel model)
+        public async Task<Guid> CreateGame(GameCreationModel model)
         {
-            return new Task<Guid>(() =>
-            {
-                var game = _mapper.Map<MonopolyGame>(model);
+            var game = _mapper.Map<MonopolyGame>(model);
 
-                _games.Add(game);
+            _games.Add(game);
 
-                return game.Id;
-            });
+            await Task.CompletedTask;
+            return game.Id;
         }
 
         public async Task<GenericResultModel<MonopolyGameModel>> GetGameById(Guid gameId)
@@ -56,7 +54,6 @@ namespace DataManager.GameStorages.StubStorages
             return result;
         }
 
-        //TODO 1: Разобраться с update
         public async Task<GenericResultModel<object>> UpdateGame(MonopolyGameModel model)
         {
             var result = new GenericResultModel<object>
@@ -73,8 +70,8 @@ namespace DataManager.GameStorages.StubStorages
             }
             else
             {
-                _games.Remove(game);
-                _games.Add(_mapper.Map<MonopolyGame>(model));
+                model.LastUpdateTime = DateTime.UtcNow;
+                _mapper.Map(model, game);
             }
 
             await Task.CompletedTask;

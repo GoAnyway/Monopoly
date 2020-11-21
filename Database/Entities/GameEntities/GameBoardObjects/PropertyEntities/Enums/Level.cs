@@ -1,4 +1,4 @@
-﻿namespace Database.Entities.GameEntities.GameBoardObjects.Property
+﻿namespace Database.Entities.GameEntities.GameBoardObjects.PropertyEntities.Enums
 {
     public enum Level
     {

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Utils
@@ -8,6 +7,12 @@ namespace Utils
     {
         public static string Md5(this string input)
         {
+<<<<<<< HEAD
+            using var md5 = MD5.Create();
+            var inputBytes = Encoding.ASCII.GetBytes(input);
+            var hashBytes = md5.ComputeHash(inputBytes);
+            var sb = new StringBuilder();
+=======
             using (var md5 = MD5.Create())
             {
                 var inputBytes = Encoding.ASCII.GetBytes(input);
@@ -19,9 +24,14 @@ namespace Utils
                 {
                     sb.Append(hashByte.ToString("X2"));
                 }
+>>>>>>> f0c2a7537f1f47e30b52364019e11d70eb28d9d9
 
-                return sb.ToString();
+            foreach (var hashByte in hashBytes)
+            {
+                sb.Append(hashByte.ToString("X2"));
             }
+
+            return sb.ToString();
         }
     }
 }

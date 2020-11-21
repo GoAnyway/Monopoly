@@ -49,14 +49,16 @@ namespace Utils.MapperProfiles
                 .ForMember(_ => _.Players, opt => opt.MapFrom(s => s.Players))
                 .ForMember(_ => _.Turn, opt => opt.MapFrom(s => s.Turn))
                 .ForMember(_ => _.StartTime, opt => opt.MapFrom(s => s.StartTime))
-                .ForMember(_ => _.FinishTime, opt => opt.MapFrom(s => s.FinishTime));
+                .ForMember(_ => _.FinishTime, opt => opt.MapFrom(s => s.FinishTime))
+                .ForMember(_ => _.LastUpdateTime, opt => opt.MapFrom(s => s.LastUpdateTime));
             CreateMap<MonopolyGameModel, MonopolyGame>()
                 .ForMember(_ => _.Id, opt => opt.MapFrom(s => s.Id))
                 .ForMember(_ => _.GameBoard, opt => opt.MapFrom(s => s.GameBoard))
                 .ForMember(_ => _.Players, opt => opt.MapFrom(s => s.Players))
                 .ForMember(_ => _.Turn, opt => opt.MapFrom(s => s.Turn))
                 .ForMember(_ => _.StartTime, opt => opt.MapFrom(s => s.StartTime))
-                .ForMember(_ => _.FinishTime, opt => opt.MapFrom(s => s.FinishTime));
+                .ForMember(_ => _.FinishTime, opt => opt.MapFrom(s => s.FinishTime))
+                .ForMember(_ => _.LastUpdateTime, opt => opt.MapFrom(s => s.LastUpdateTime));
         }
     }
 }

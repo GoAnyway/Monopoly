@@ -5,6 +5,11 @@ namespace Models.GameModels
 {
     public class GameBoardModel
     {
-        private readonly List<PropertyModel> _properties = new List<PropertyModel>();
+        public GameBoardModel(ICollection<CellModel> cells)
+        {
+            Cells = cells;
+        }
+
+        public ICollection<CellModel> Cells { get; set; } 
     }
 }

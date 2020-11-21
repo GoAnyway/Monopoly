@@ -52,7 +52,6 @@ namespace DataManager.GameStorages.DbStorages
             return result;
         }
 
-        //TODO 1: Разобраться с update
         public async Task<GenericResultModel<object>> UpdateGame(MonopolyGameModel model)
         {
             var result = new GenericResultModel<object>
@@ -69,8 +68,8 @@ namespace DataManager.GameStorages.DbStorages
             }
             else
             {
-                _context.ActiveGames.Remove(game);
-                _context.ActiveGames.Add(_mapper.Map<MonopolyGame>(model));
+                model.LastUpdateTime = DateTime.UtcNow;
+                _mapper.Map(model, game);
                 await _context.SaveChangesAsync();
             }
 

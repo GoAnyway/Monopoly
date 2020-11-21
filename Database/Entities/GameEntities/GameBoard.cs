@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
-using Database.Entities.GameEntities.GameBoardObjects.Property;
+using Database.Entities.GameEntities.GameBoardObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace Database.Entities.GameEntities
 {
+    [Owned]
     public class GameBoard
     {
-        public ICollection<Property> Properties { get; set; }
+        public ICollection<Cell> Cells { get; set; }
     }
 }

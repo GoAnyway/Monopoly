@@ -26,5 +26,10 @@ namespace Monopoly.GameCommunication
 
             return gameId;
         }
+
+        public Task MakeMove(MonopolyGameModel resultData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

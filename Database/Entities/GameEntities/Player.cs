@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
-using Database.Entities.GameEntities.GameBoardObjects.Property;
+using Database.Entities.GameEntities.GameBoardObjects.PropertyEntities;
 using Database.Entities.UserEntity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Database.Entities.GameEntities
 {
+    [Owned]
     public class Player
     {
         public User User { get; set; }

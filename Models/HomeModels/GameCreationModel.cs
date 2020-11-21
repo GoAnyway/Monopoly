@@ -11,7 +11,6 @@ namespace Models.HomeModels
             
         }
 
-        //TODO 2: Deserialization of reference types without parameterless constructor is not supported.
         public GameCreationModel(UserModel owner, string name, bool isPrivate = false)
         {
             Id = Guid.NewGuid();

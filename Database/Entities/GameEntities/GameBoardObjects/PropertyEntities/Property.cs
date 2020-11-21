@@ -1,14 +1,24 @@
 ﻿using System;
-using Models.GameModels.CellModels.PropertyEnums;
+using Database.Entities.GameEntities.GameBoardObjects.PropertyEntities.Enums;
+using Microsoft.EntityFrameworkCore;
 
-namespace Models.GameModels.CellModels
+namespace Database.Entities.GameEntities.GameBoardObjects.PropertyEntities
 {
-    public class PropertyModel : CellModel
+    [Owned]
+    public class Property : Cell
     {
+        public Property(PropertyType propertyType, string name, int cost, int baseTax)
+        {
+            PropertyType = propertyType;
+            Name = name;
+            Cost = cost;
+            BaseTax = baseTax;
+        }
+
         public PropertyType PropertyType { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
-        public int Tax =>
+        public virtual int Tax =>
             UpgradeLevel switch
             {
                 Level.Zero => BaseTax,
@@ -21,9 +31,9 @@ namespace Models.GameModels.CellModels
             };
         public int BaseTax { get; set; }
         public int Deposit => Cost / 2;
-        public int Redemption => (int) (Deposit * 1.2);
+        public int Redemption => (int)(Deposit * 1.2);
         public int UpgradeCost { get; set; }
-        public PlayerModel Owner { get; set; }
-        public Level UpgradeLevel { get; set; }
+        public Player Owner { get; set; }
+        public virtual Level UpgradeLevel { get; set; } = Level.Zero;
     }
 }
