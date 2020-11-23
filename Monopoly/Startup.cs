@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Monopoly.Authentication;
 using Monopoly.GameCommunication;
-using Utils.DIExtensions;
+using Utils.Extensions;
 using Utils.MapperProfiles;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
@@ -50,9 +50,9 @@ namespace Monopoly
                 });
 
 #if TEST || DEBUG
-            services.AddScoped<IUserStorage, StubUserStorage>();
-            services.AddScoped<IGameCreationStorage, StubGameCreationStorage>();
-            services.AddScoped<IMonopolyGameStorage, StubMonopolyGameStorage>();
+            services.AddSingleton<IUserStorage, StubUserStorage>();
+            services.AddSingleton<IGameCreationStorage, StubGameCreationStorage>();
+            services.AddSingleton<IMonopolyGameStorage, StubMonopolyGameStorage>();
 #else
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MonopolyContext>(options => options.UseSqlServer(connection));

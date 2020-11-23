@@ -2,20 +2,20 @@
 using Microsoft.Extensions.DependencyInjection;
 using Utils.MapperProfiles;
 
-namespace Utils.DIExtensions
+namespace Utils.Extensions
 {
-    public static class MapperExtensions
+    public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddMapper(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IConfigurationProvider>(_ =>
+            serviceCollection.AddSingleton<IConfigurationProvider>(_ =>
                 new MapperConfiguration(cfg => cfg.AddProfiles(new Profile[]
                 {
                     new UserProfile(),
                     new MonopolyGameProfile()
                 })));
 
-            serviceCollection.AddScoped<Mapper>();
+            serviceCollection.AddSingleton<Mapper>();
 
             return serviceCollection;
         }

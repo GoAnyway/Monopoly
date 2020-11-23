@@ -2,6 +2,7 @@
 using AutoMapper;
 using Database.Entities.UserEntity;
 using Models.AuthenticationModels;
+using Utils.Extensions;
 
 namespace Utils.MapperProfiles
 {

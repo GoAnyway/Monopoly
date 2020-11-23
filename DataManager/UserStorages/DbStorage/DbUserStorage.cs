@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.AuthenticationModels;
 using Utils;
+using Utils.Extensions;
 
 namespace DataManager.UserStorages.DbStorage
 {

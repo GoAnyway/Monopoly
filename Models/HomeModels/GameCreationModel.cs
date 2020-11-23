@@ -13,17 +13,15 @@ namespace Models.HomeModels
 
         public GameCreationModel(UserModel owner, string name, bool isPrivate = false)
         {
-            Id = Guid.NewGuid();
             Owner = owner;
             Name = name;
             IsPrivate = isPrivate;
-            Players = new List<UserModel>();
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public UserModel Owner { get; set; }
-        public ICollection<UserModel> Players { get; set; }
+        public ICollection<UserModel> Players { get; set; } = new List<UserModel>();
         public int NumberOfPlayers => Players.Count;
         public bool IsPrivate { get; set; }
         public string Password { get; set; }

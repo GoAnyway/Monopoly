@@ -94,7 +94,7 @@ namespace Monopoly.Controllers
             return new ObjectResult(await GetHomeModel());
         }
 
-        public async Task<HomeModel> GetHomeModel()
+        private async Task<HomeModel> GetHomeModel()
         {
             var authorizedUser = await _authentication.GetUserByClaim(User);
             var createdGames = await _gameStorage.GetCreatedGames();
