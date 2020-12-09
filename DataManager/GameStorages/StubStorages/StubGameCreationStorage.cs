@@ -13,7 +13,7 @@ namespace DataManager.GameStorages.StubStorages
 {
     public class StubGameCreationStorage : IGameCreationStorage
     {
-        private readonly IList<GameCreation> _games;
+        private readonly ICollection<GameCreation> _games;
         private readonly Mapper _mapper;
 
         public StubGameCreationStorage(Mapper mapper)

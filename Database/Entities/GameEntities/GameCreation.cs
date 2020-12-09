@@ -11,7 +11,6 @@ namespace Database.Entities.GameEntities
             Owner = owner;
             Name = name;
             IsPrivate = isPrivate;
-            Players = new List<User>();
         }
 
         public Guid Id { get; set; }

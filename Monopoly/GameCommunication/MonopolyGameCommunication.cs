@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using DataManager.GameStorages;
+using Game.GameStates;
 using Game.Logic;
 using Models.GameModels;
 using Models.HomeModels;
@@ -27,9 +28,12 @@ namespace Monopoly.GameCommunication
             return gameId;
         }
 
-        public Task MakeMove(MonopolyGameModel resultData)
+        public Task MakeMove(MonopolyGameModel game)
         {
-            throw new NotImplementedException();
+            if (game.CurrentGameState is WaitingState gameState)
+            {
+                gameState.GoToNextState(game);
+            }
         }
     }
 }

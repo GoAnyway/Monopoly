@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Database.Entities.GameEntities.GameBoardObjects
 {
@@ -6,5 +7,7 @@ namespace Database.Entities.GameEntities.GameBoardObjects
     {
         [Key]
         public int Index { get; set; }
+
+        public ICollection<Player> Players { get; set; }
     }
 }

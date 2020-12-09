@@ -5,19 +5,13 @@ namespace Database.Entities.GameEntities
 {
     public class MonopolyGame
     {
-        public MonopolyGame()
-        {
-            Id = Guid.NewGuid();
-            StartTime = DateTime.UtcNow;
-            LastUpdateTime = DateTime.UtcNow;
-        }
-
         public Guid Id { get; set; }
         public GameBoard GameBoard { get; set; }
-        public ICollection<Player> Players { get; set; }
+        public IList<Player> Players { get; set; }
         public int Turn { get; set; }
-        public DateTime StartTime { get; set; }
+        public Player ActivePlayer { get; set; }
+        public DateTime StartTime { get; set; } = DateTime.UtcNow;
         public DateTime FinishTime { get; set; }
-        public DateTime LastUpdateTime { get; set; }
+        public DateTime LastUpdateTime { get; set; } = DateTime.UtcNow;
     }
 }

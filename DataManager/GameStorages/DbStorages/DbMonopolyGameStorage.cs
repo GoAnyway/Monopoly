@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Database;
 using Database.Entities.GameEntities;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.AuthenticationModels;
 using Models.GameModels;
@@ -24,8 +26,9 @@ namespace DataManager.GameStorages.DbStorages
         public async Task<Guid> CreateGame(GameCreationModel model)
         {
             var game = _mapper.Map<MonopolyGame>(model);
+            game.GameBoard = new GameBoard(await _context.Cells.ToListAsync());
 
-            await _context.ActiveGames.AddAsync(game);
+            _context.ActiveGames.Add(game);
 
             return game.Id;
         }

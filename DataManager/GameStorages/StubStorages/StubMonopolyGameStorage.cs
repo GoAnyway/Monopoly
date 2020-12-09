@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Database;
 using Database.Entities.GameEntities;
+using Database.Entities.GameEntities.GameBoardObjects;
 using Models;
 using Models.AuthenticationModels;
 using Models.GameModels;
@@ -13,17 +15,21 @@ namespace DataManager.GameStorages.StubStorages
 {
     public class StubMonopolyGameStorage : IMonopolyGameStorage
     {
-        private readonly IList<MonopolyGame> _games = new List<MonopolyGame>();
+        private readonly ICollection<MonopolyGame> _games = new List<MonopolyGame>();
         private readonly Mapper _mapper;
+        private readonly ICollection<Cell> _cells;
 
         public StubMonopolyGameStorage(Mapper mapper)
         {
             _mapper = mapper;
+
+            _cells = CellSeed.GetCellsToSeed().ToList();
         }
 
         public async Task<Guid> CreateGame(GameCreationModel model)
         {
             var game = _mapper.Map<MonopolyGame>(model);
+            game.GameBoard = new GameBoard(_cells);
 
             _games.Add(game);
 

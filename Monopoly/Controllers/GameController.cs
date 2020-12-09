@@ -46,11 +46,13 @@ namespace Monopoly.Controllers
         {
             var gameId = GetGameIdFromSession();
             var result = await _gameStorage.GetGameById(gameId);
+            if (!result.Success) return new ObjectResult(result.Error);
+
             var cachedUpdateTime = DateTime.Parse(HttpContext.Session.GetString("updateTime"));
 
-            return result.Success && cachedUpdateTime != result.Data.LastUpdateTime
-                ? new ObjectResult(result.Data)
-                : new ObjectResult(result.Error);
+            return cachedUpdateTime != result.Data.LastUpdateTime 
+                ? new ObjectResult(result.Data) 
+                : new ObjectResult(null);
         }
 
         [Route("Move")]

@@ -5,12 +5,15 @@ namespace Models.GameModels
 {
     public class MonopolyGameModel
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
         public GameBoardModel GameBoard { get; set; }
-        public List<PlayerModel> Players { get; set; }
+        public IList<PlayerModel> Players { get; set; }
         public int Turn { get; set; }
-        public DateTime StartTime { get; set; } = DateTime.UtcNow;
+        public PlayerModel ActivePlayer { get; set; }
+        public IEnumerable<DiceModel> Dices { get; set; }
+        public object CurrentGameState { get; set; }
+        public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }
-        public DateTime LastUpdateTime { get; set; } = DateTime.UtcNow;
+        public DateTime LastUpdateTime { get; set; }
     }
 }
